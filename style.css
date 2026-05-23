@@ -44,6 +44,7 @@ body {
     text-decoration: none;
     margin-left: 20px;
     font-weight: 500;
+    font-size: 18px;
     transition: color 0.3s ease;
     background: transparent;
     border: none;
@@ -766,4 +767,45 @@ td strong {
     /* Marco naranja que combina con tus tarifas */
     display: block;
     margin: 0 auto;
+}
+
+/* --- ESTILOS PARA EL REPRODUCTOR DE AUDIO --- */
+.audio-contenedor {
+    margin-top: 15px;
+    text-align: center;
+    background-color: #1a1a1a;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #ff6600;
+    /* Borde naranja haciendo juego */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.audio-contenedor p {
+    color: #ffffff;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+audio {
+    width: 100%;
+    max-width: 300px;
+}
+
+/* --- COLOR AMARILLO DESTACADO PARA SECCIONES DE CONTENIDO --- */
+nav a[href="que-hago.html"],
+nav a[href="beneficios.html"],
+nav a[href="nutricion.html"] {
+    color: #ffd700;
+    /* Color amarillo oro de alta visibilidad y contraste */
+}
+
+/* Efecto opcional: Cambia de color cuando pasas el mouse por encima */
+nav a[href="que-hago.html"]:hover,
+nav a[href="beneficios.html"]:hover,
+nav a[href="nutricion.html"]:hover {
+    color: #ffffff;
+    /* Pasa a blanco al posicionar el cursor */
 }

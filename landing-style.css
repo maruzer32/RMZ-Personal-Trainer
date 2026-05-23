@@ -1,0 +1,140 @@
+/* --- DISEÑO EDITORIAL LIMPIO PARA LANDING --- */
+body {
+    background-color: #121212;
+    /* Fondo oscuro liso para que descansen los ojos */
+    color: #ffffff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.landing {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.landing h1 {
+    color: #ff6600;
+    /* Naranja RMZ para el título principal */
+    text-align: center;
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    border-bottom: 2px solid #2d2d2d;
+    padding-bottom: 20px;
+}
+
+/* Estructura tipo bloque de diario */
+.bloque {
+    background-color: #1a1a1a;
+    /* Tarjeta gris oscuro mate muy suave */
+    border-left: 4px solid #ffd700;
+    /* Detalle amarillo en el borde izquierdo */
+    padding: 25px;
+    margin-bottom: 30px;
+    border-radius: 0 8px 8px 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.bloque h2 {
+    color: #ffd700;
+    /* Amarillo para los subtítulos */
+    margin-top: 0;
+    font-size: 1.5rem;
+}
+
+.bloque p {
+    color: #e0e0e0;
+    /* Blanco suave, no encandila y se lee perfecto */
+    font-size: 1.1rem;
+    line-height: 1.6;
+    /* Más espacio entre líneas tipo lectura de diario */
+}
+
+/* Lista de viñetas limpia */
+.bloque ul {
+    list-style: none;
+    /* Quitamos los puntos blancos feos de antes */
+    padding-left: 0;
+    margin-top: 15px;
+}
+
+.bloque li {
+    font-size: 1.05rem;
+    margin-bottom: 10px;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Botón elegante para volver al inicio */
+.btn-volver {
+    display: inline-block;
+    background-color: #ff6600;
+    color: #000000 !important;
+    padding: 12px 30px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    transition: background 0.3s;
+    margin: 20px auto;
+}
+
+.btn-volver:hover {
+    background-color: #ffd700;
+}
+
+/* --- DISEÑO ESPECTACULAR PARA EL BOTÓN DE REGRESO --- */
+.contenedor-regresar {
+    text-align: center;
+    margin-top: 50px;
+    padding-bottom: 40px;
+}
+
+.btn-regresar-principal {
+    display: inline-block;
+    background-color: #ff6600;
+    /* Naranja enérgico RMZ */
+    color: #000000 !important;
+    /* Texto negro para que contraste perfecto */
+    padding: 15px 35px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+    border-radius: 6px;
+    text-transform: uppercase;
+    box-shadow: 0 4px 15px rgba(255, 102, 0, 0.4);
+    transition: all 0.3s ease;
+}
+
+/* Efecto cuando pasan el mouse por encima */
+.btn-regresar-principal:hover {
+    background-color: #ffd700;
+    /* Cambia a amarillo oro */
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.5);
+    transform: translateY(-2px);
+    /* Se eleva un poquito de forma moderna */
+}
+
+/* --- BOTÓN FLOTANTE CERRAR EN CELESTE AGUA --- */
+.boton-cerrar {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    background-color: #00f0ff;
+    /* Fondo Celeste Agua */
+    color: #000000 !important;
+    /* Letras en negro para que contraste */
+    text-decoration: none !important;
+    /* Quita el subrayado morado */
+    font-weight: bold;
+    font-size: 18px;
+    /* Letra grande y legible */
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 15px rgba(0, 240, 255, 0.4);
+    display: inline-block;
+}

@@ -21,6 +21,9 @@
             <a href="que-hago.html">Qué Hago</a>
             <a href="beneficios.html">Beneficios</a>
             <a href="nutricion.html">Nutrición</a>
+            <a href="landing.html"
+                style="color: #ff6600; font-weight: bold; font-size: 18px; margin-left: 20px;">Importante</a>
+
         </nav>
     </header>
 
@@ -145,166 +148,26 @@
                 </form>
             </div>
 
-            <!-- Lado Derecho: Tu Foto en la Montaña -->
+            <!-- Lado Derecho: Tu Foto en la Montaña y el Reproductor de Audio -->
             <div class="foto-perfil-container">
                 <img src="img/00-benchu.png" alt="RMZ Personal Trainer" class="foto-entrenador">
+
+                <!-- REPRODUCTOR DE AUDIO CON TU TEMA -->
+                <div class="audio-contenedor">
+                    <p>🎵 Escuchá el tema motivacional:</p>
+                    <audio controls>
+                        <source src="img/7salvame.mp3" type="audio/mpeg">
+                        Tu navegador no soporta este elemento de audio.
+                    </audio>
+                </div>
             </div>
 
-        </div>
     </section>
 
 
     <!-- Código de control para el Carrusel y el Formulario de Correo -->
-    <script>
-        // Control del Carrusel
-        const slide = document.querySelector('.carousel-slide');
-        const images = document.querySelectorAll('.carousel-slide img');
-        const indicators = document.querySelector('.carousel-indicators');
-        const totalImages = images.length;
-        let currentIdx = 0;
-        let carouselInterval;
-        let heroSlideIndex = 0;
-        let heroInterval;
-        let heroAutoCycles = 0;
-        const HERO_AUTOPLAY_MAX_CYCLES = 5;
+    <script src="script.js"></script>
 
-        function updateCarousel() {
-            slide.style.transform = `translateX(-${currentIdx * 100}%)`;
-            updateIndicators();
-        }
-
-        function updateIndicators() {
-            indicators.innerHTML = '';
-            images.forEach((_, index) => {
-                const dot = document.createElement('button');
-                dot.className = `indicator-dot${index === currentIdx ? ' active' : ''}`;
-                dot.setAttribute('aria-label', `Ir a la imagen ${index + 1}`);
-                dot.addEventListener('click', () => {
-                    currentIdx = index;
-                    updateCarousel();
-                    resetAutoplay();
-                });
-                indicators.appendChild(dot);
-            });
-        }
-
-        function moveSlide(direction) {
-            currentIdx = (currentIdx + direction + totalImages) % totalImages;
-            updateCarousel();
-            resetAutoplay();
-        }
-
-        function startAutoplay() {
-            carouselInterval = setInterval(() => {
-                currentIdx = (currentIdx + 1) % totalImages;
-                updateCarousel();
-            }, 4000);
-        }
-
-        function resetAutoplay() {
-            clearInterval(carouselInterval);
-            startAutoplay();
-        }
-
-        function moveHeroSlide(direction, isAuto = false) {
-            const heroSlides = document.querySelectorAll('.hero-slide');
-            heroSlideIndex = (heroSlideIndex + direction + heroSlides.length) % heroSlides.length;
-            heroSlides.forEach((slide, index) => {
-                slide.classList.toggle('active', index === heroSlideIndex);
-            });
-            updateHeroIndicators();
-
-            if (isAuto && heroSlideIndex === 0) {
-                heroAutoCycles += 1;
-                if (heroAutoCycles >= HERO_AUTOPLAY_MAX_CYCLES) {
-                    stopHeroAutoplay();
-                }
-            }
-        }
-
-        function updateHeroIndicators() {
-            const heroIndicators = document.querySelector('.hero-indicators');
-            const heroSlides = document.querySelectorAll('.hero-slide');
-            heroIndicators.innerHTML = '';
-            heroSlides.forEach((_, index) => {
-                const dot = document.createElement('button');
-                dot.className = `hero-dot${index === heroSlideIndex ? ' active' : ''}`;
-                dot.setAttribute('aria-label', `Ir a la imagen ${index + 1}`);
-                dot.addEventListener('click', () => {
-                    heroSlideIndex = index;
-                    moveHeroSlide(0);
-                    resetHeroAutoplay();
-                });
-                heroIndicators.appendChild(dot);
-            });
-        }
-
-        function startHeroAutoplay() {
-            if (heroAutoCycles >= HERO_AUTOPLAY_MAX_CYCLES) {
-                return;
-            }
-            clearInterval(heroInterval);
-            heroInterval = setInterval(() => moveHeroSlide(1, true), 3000);
-        }
-
-        function stopHeroAutoplay() {
-            clearInterval(heroInterval);
-            heroInterval = null;
-        }
-
-        function resetHeroAutoplay() {
-            if (heroAutoCycles >= HERO_AUTOPLAY_MAX_CYCLES) {
-                return;
-            }
-            clearInterval(heroInterval);
-            startHeroAutoplay();
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            updateCarousel();
-            startAutoplay();
-            startHeroAutoplay();
-            updateHeroIndicators();
-            const carousel = document.querySelector('.carousel-container');
-            carousel.addEventListener('mouseenter', () => clearInterval(carouselInterval));
-            carousel.addEventListener('mouseleave', startAutoplay);
-            const hero = document.querySelector('.hero-carousel');
-            hero.addEventListener('mouseenter', () => clearInterval(heroInterval));
-            hero.addEventListener('mouseleave', startHeroAutoplay);
-
-        });
-
-        // Control del Formulario y Envío de Mail
-        document.getElementById('trainerForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-
-            // Obtener datos del formulario
-            const nombre = document.getElementById('nombre').value;
-            const whatsapp = document.getElementById('whatsapp').value;
-            const plan = document.getElementById('plan').value;
-
-            // Obtener fecha automática del día actual
-            const hoy = new Date();
-            const fechaFormateada = hoy.toLocaleDateString('es-AR'); // Formato DD/MM/AAAA
-
-            // Configurar Asunto Fijo
-            const asunto = encodeURIComponent("Solicitud Personal Trainer");
-
-            // Configurar Cuerpo del Mensaje con espacios y estructura limpia
-            const cuerpoMensaje = `SOLICITUD DE ENTRENAMIENTO\n` +
-                `===========================\n\n` +
-                `Fecha: ${fechaFormateada}\n\n` +
-                `Nombre y Apellido: ${nombre}\n` +
-                `Teléfono / WhatsApp: ${whatsapp}\n` +
-                `Plan de Interés: ${plan}\n\n` +
-                `===========================`;
-
-            const cuerpoCodificado = encodeURIComponent(cuerpoMensaje);
-
-            // Abrir el gestor de correo (Gmail, Outlook, etc.)
-            window.location.href = `mailto:maruzer32@gmail.com?subject=${asunto}&body=${cuerpoCodificado}`;
-        });
-    </script>
 </body>
 
 </html>
