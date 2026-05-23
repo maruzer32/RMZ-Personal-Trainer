@@ -483,7 +483,79 @@ body {
     }
 }
 
-/* ==========================================================================\n   Adaptabilidad para Pantallas Pequeñas (Celulares)\n   ========================================================================== */\n@media (max-width: 600px) {\n    .header {\n        flex-direction: column;\n        gap: 15px;\n        padding: 15px 20px;\n    }\n\n    .nav a {\n        margin: 0 10px;\n    }\n\n    .hero {\n        height: auto;\n        padding: 50px 15px;\n    }\n\n    .carousel-btn {\n        width: 40px;\n        height: 40px;\n        font-size: 16px;\n    }\n\n    .prev {\n        left: 10px;\n    }\n\n    .next {\n        right: 10px;\n    }\n\n    .form-container {\n        padding: 30px 20px;\n    }\n}\n\n/* ==========================================================================\n   Estilos del menú Más y listas premium\n   ========================================================================== */\n.more-box {\n    display: flex;\n    flex-direction: column;\n    gap: 12px;\n    padding: 14px;\n    border-radius: 14px;\n    background-color: #111625;\n    margin-left: 20px;\n}\n\n.more-label {\n    color: #ffffff;\n    font-weight: 700;\n    letter-spacing: 0.8px;\n    text-transform: uppercase;\n    font-size: 13px;\n}\n\n.more-buttons {\n    display: grid;\n    gap: 10px;\n}
+/* ==========================================================================\n   Adaptabilidad para Pantallas Pequeñas (Celulares)\n   ========================================================================== */
+\n@media (max-width: 600px) {
+    \n .header {
+        \n flex-direction: column;
+        \n gap: 15px;
+        \n padding: 15px 20px;
+        \n
+    }
+
+    \n\n .nav a {
+        \n margin: 0 10px;
+        \n
+    }
+
+    \n\n .hero {
+        \n height: auto;
+        \n padding: 50px 15px;
+        \n
+    }
+
+    \n\n .carousel-btn {
+        \n width: 40px;
+        \n height: 40px;
+        \n font-size: 16px;
+        \n
+    }
+
+    \n\n .prev {
+        \n left: 10px;
+        \n
+    }
+
+    \n\n .next {
+        \n right: 10px;
+        \n
+    }
+
+    \n\n .form-container {
+        \n padding: 30px 20px;
+        \n
+    }
+
+    \n
+}
+
+\n\n
+
+/* ==========================================================================\n   Estilos del menú Más y listas premium\n   ========================================================================== */
+\n.more-box {
+    \n display: flex;
+    \n flex-direction: column;
+    \n gap: 12px;
+    \n padding: 14px;
+    \n border-radius: 14px;
+    \n background-color: #111625;
+    \n margin-left: 20px;
+    \n
+}
+
+\n\n.more-label {
+    \n color: #ffffff;
+    \n font-weight: 700;
+    \n letter-spacing: 0.8px;
+    \n text-transform: uppercase;
+    \n font-size: 13px;
+    \n
+}
+
+\n\n.more-buttons {
+    \n display: grid;
+    \n gap: 10px;
+    \n
+}
 
 .more-btn {
     display: inline-flex;
@@ -577,4 +649,121 @@ body {
     .tarjeta-contenido {
         padding: 24px;
     }
+}
+
+/* --- ESTILOS DE LA SECCIÓN DE TARIFAS --- */
+.tarifas {
+    padding: 120px 20px 80px 20px;
+    /* Le damos 120px arriba para que el menú no lo tape */
+    background-color: #121212;
+    /* Fondo oscuro */
+    text-align: center;
+}
+
+.tarifas h2 {
+    color: #ff6600;
+    /* Naranja llamativo para el título */
+    font-size: 2rem;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+}
+
+.tabla-contenedor {
+    overflow-x: auto;
+    /* Permite deslizar la tabla en celulares para que no se rompa */
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #1a1a1a;
+    /* Fondo de la tabla un poco más claro */
+    color: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+th,
+td {
+    padding: 15px 20px;
+    text-align: center;
+    border-bottom: 1px solid #2d2d2d;
+}
+
+th {
+    background-color: #ff6600;
+    /* Encabezado naranja */
+    color: #000000;
+    /* Texto del encabezado en negro para buen contraste */
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+tr:hover {
+    background-color: #252525;
+    /* Efecto al pasar el mouse por encima */
+}
+
+td strong {
+    color: #ff6600;
+}
+
+.precio {
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.precio-pack {
+    color: #00ff66;
+    /* Verde sutil para destacar el máximo ahorro del plan de 3 meses */
+    font-weight: bold;
+}
+
+/* Ajuste rápido para celulares */
+@media (max-width: 600px) {
+
+    th,
+    td {
+        padding: 10px 8px;
+        font-size: 0.9rem;
+    }
+}
+
+/* --- DISEÑO DE CONTACTO CON FOTO AL LADO --- */
+.contacto-flex-contenedor {
+    display: flex;
+    flex-wrap: wrap;
+    /* En celulares pone la foto abajo del formulario */
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    /* Separación entre el cuadro del formulario y tu foto */
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.form-container,
+.foto-perfil-container {
+    flex: 1;
+    min-width: 300px;
+    /* Evita que se aplasten en pantallas chicas */
+}
+
+.foto-entrenador {
+    width: 100%;
+    max-width: 380px;
+    /* Ajusta el tamaño de tu imagen */
+    height: auto;
+    border-radius: 12px;
+    /* Bordes redondeados estéticos */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+    /* Sombra de fondo */
+    border: 2px solid #ff6600;
+    /* Marco naranja que combina con tus tarifas */
+    display: block;
+    margin: 0 auto;
 }
