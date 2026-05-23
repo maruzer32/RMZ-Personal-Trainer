@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Trainer | Tu Éxito Fitness</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Encabezado / Navegación -->
+    <header class="header">
+        <div class="logo">RMZ Personal Trainer</div>
+        <nav class="nav">
+            <a href="#inicio">Inicio</a>
+            <a href="#galeria">Galería</a>
+            <a href="#contacto">Contacto</a>
+            <a href="que-hago.html">Qué Hago</a>
+            <a href="beneficios.html">Beneficios</a>
+            <a href="nutricion.html">Nutrición</a>
+        </nav>
+    </header>
+
+    <!-- Sección Principal con Carrusel -->
+    <section id="inicio" class="hero">
+        <div class="hero-carousel">
+            <div class="hero-slide active">
+                <img src="img/20 principal01.png" alt="Entrenamiento principal 1">
+            </div>
+            <div class="hero-slide">
+                <img src="img/21 principal02.png" alt="Entrenamiento principal 2">
+            </div>
+            <div class="hero-slide">
+                <img src="img/22 principal03.png" alt="Entrenamiento principal 3">
+            </div>
+            <div class="hero-slide">
+                <img src="img/23 principal04.png" alt="Entrenamiento principal 4">
+            </div>
+            <button class="hero-btn prev" onclick="moveHeroSlide(-1)">&#10094;</button>
+            <button class="hero-btn next" onclick="moveHeroSlide(1)">&#10095;</button>
+            <div class="hero-indicators"></div>
+        </div>
+        <div class="hero-content">
+            <h1>Transforma tu Cuerpo y tu Mente</h1>
+            <p>Entrenamientos personalizados adaptados a tus objetivos y estilo de vida.</p>
+            <a href="#contacto" class="btn">Empieza Ahora</a>
+        </div>
+    </section>
+
+    <!-- Sección del Carrusel de Fotos -->
+    <section id="galeria" class="carousel-section">
+        <h2>Gimnasia y Entrenamiento a Medida</h2>
+        <p>Desliza para ver las instalaciones y el ambiente de trabajo</p>
+
+        <div class="carousel-container">
+            <div class="carousel-slide">
+                <img src="img/01 BiciFija.png" alt="Entrenamiento en bici fija">
+                <img src="img/02 eliptico.png" alt="Entrenamiento en elíptico">
+                <img src="img/03 remo.png" alt="Máquina de remo">
+                <img src="img/04 bolsaKick.png" alt="Entrenamiento de kick boxing">
+                <img src="img/05 bolsaKick.png" alt="Práctica con bolsa de boxeo">
+                <img src="img/06 sentadaGamba.png" alt="Ejercicio de abdominales en colchoneta">
+                <img src="img/07 mancuernas.png" alt="Levantamiento de mancuernas">
+                <img src="img/08 mancuernas.png" alt="Rutina de fuerza con mancuernas">
+            </div>
+
+            <div class="carousel-indicators"></div>
+
+            <!-- Botones para navegar por el carrusel -->
+            <button class="carousel-btn prev" onclick="moveSlide(-1)">&#10094;</button>
+            <button class="carousel-btn next" onclick="moveSlide(1)">&#10095;</button>
+        </div>
+    </section>
+
+    <!-- Sección de Contacto con Formulario Profesional -->
+    <section id="contacto" class="contacto">
+        <div class="form-container">
+            <h2>¿Listo para el cambio?</h2>
+            <p>Completa tus datos y armamos tu plan a medida.</p>
+
+            <form id="trainerForm">
+                <div class="form-group">
+                    <label for="nombre">Nombre y Apellido:</label>
+                    <input type="text" id="nombre" name="nombre" required placeholder="XXXXXXXX YYYY ZZZZZZZ">
+                </div>
+
+                <div class="form-group">
+                    <label for="whatsapp">Teléfono / WhatsApp:</label>
+                    <input type="tel" id="whatsapp" name="whatsapp" required placeholder="261-XXXXXXX">
+                </div>
+
+                <div class="form-group">
+                    <label for="plan">Plan de Interés:</label>
+                    <select id="plan" name="plan" required>
+                        <option value="" disabled selected>Selecciona un plan</option>
+                        <option value="Adelgazar">Adelgazar</option>
+                        <option value="Mantenimiento">Mantenimiento</option>
+                        <option value="Mejora Física Particular">Mejora Física</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn-submit">Enviar Solicitud</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Código de control para el Carrusel y el Formulario de Correo -->
+    <script>
+        // Control del Carrusel
+        const slide = document.querySelector('.carousel-slide');
+        const images = document.querySelectorAll('.carousel-slide img');
+        const indicators = document.querySelector('.carousel-indicators');
+        const totalImages = images.length;
+        let currentIdx = 0;
+        let carouselInterval;
+        let heroSlideIndex = 0;
+        let heroInterval;
+        let heroAutoCycles = 0;
+        const HERO_AUTOPLAY_MAX_CYCLES = 5;
+
+        function updateCarousel() {
+            slide.style.transform = `translateX(-${currentIdx * 100}%)`;
+            updateIndicators();
+        }
+
+        function updateIndicators() {
+            indicators.innerHTML = '';
+            images.forEach((_, index) => {
+                const dot = document.createElement('button');
+                dot.className = `indicator-dot${index === currentIdx ? ' active' : ''}`;
+                dot.setAttribute('aria-label', `Ir a la imagen ${index + 1}`);
+                dot.addEventListener('click', () => {
+                    currentIdx = index;
+                    updateCarousel();
+                    resetAutoplay();
+                });
+                indicators.appendChild(dot);
+            });
+        }
+
+        function moveSlide(direction) {
+            currentIdx = (currentIdx + direction + totalImages) % totalImages;
+            updateCarousel();
+            resetAutoplay();
+        }
+
+        function startAutoplay() {
+            carouselInterval = setInterval(() => {
+                currentIdx = (currentIdx + 1) % totalImages;
+                updateCarousel();
+            }, 4000);
+        }
+
+        function resetAutoplay() {
+            clearInterval(carouselInterval);
+            startAutoplay();
+        }
+
+        function moveHeroSlide(direction, isAuto = false) {
+            const heroSlides = document.querySelectorAll('.hero-slide');
+            heroSlideIndex = (heroSlideIndex + direction + heroSlides.length) % heroSlides.length;
+            heroSlides.forEach((slide, index) => {
+                slide.classList.toggle('active', index === heroSlideIndex);
+            });
+            updateHeroIndicators();
+
+            if (isAuto && heroSlideIndex === 0) {
+                heroAutoCycles += 1;
+                if (heroAutoCycles >= HERO_AUTOPLAY_MAX_CYCLES) {
+                    stopHeroAutoplay();
+                }
+            }
+        }
+
+        function updateHeroIndicators() {
+            const heroIndicators = document.querySelector('.hero-indicators');
+            const heroSlides = document.querySelectorAll('.hero-slide');
+            heroIndicators.innerHTML = '';
+            heroSlides.forEach((_, index) => {
+                const dot = document.createElement('button');
+                dot.className = `hero-dot${index === heroSlideIndex ? ' active' : ''}`;
+                dot.setAttribute('aria-label', `Ir a la imagen ${index + 1}`);
+                dot.addEventListener('click', () => {
+                    heroSlideIndex = index;
+                    moveHeroSlide(0);
+                    resetHeroAutoplay();
+                });
+                heroIndicators.appendChild(dot);
+            });
+        }
+
+        function startHeroAutoplay() {
+            if (heroAutoCycles >= HERO_AUTOPLAY_MAX_CYCLES) {
+                return;
+            }
+            clearInterval(heroInterval);
+            heroInterval = setInterval(() => moveHeroSlide(1, true), 3000);
+        }
+
+        function stopHeroAutoplay() {
+            clearInterval(heroInterval);
+            heroInterval = null;
+        }
+
+        function resetHeroAutoplay() {
+            if (heroAutoCycles >= HERO_AUTOPLAY_MAX_CYCLES) {
+                return;
+            }
+            clearInterval(heroInterval);
+            startHeroAutoplay();
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            updateCarousel();
+            startAutoplay();
+            startHeroAutoplay();
+            updateHeroIndicators();
+            const carousel = document.querySelector('.carousel-container');
+            carousel.addEventListener('mouseenter', () => clearInterval(carouselInterval));
+            carousel.addEventListener('mouseleave', startAutoplay);
+            const hero = document.querySelector('.hero-carousel');
+            hero.addEventListener('mouseenter', () => clearInterval(heroInterval));
+            hero.addEventListener('mouseleave', startHeroAutoplay);
+
+        });
+
+        // Control del Formulario y Envío de Mail
+        document.getElementById('trainerForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Obtener datos del formulario
+            const nombre = document.getElementById('nombre').value;
+            const whatsapp = document.getElementById('whatsapp').value;
+            const plan = document.getElementById('plan').value;
+
+            // Obtener fecha automática del día actual
+            const hoy = new Date();
+            const fechaFormateada = hoy.toLocaleDateString('es-AR'); // Formato DD/MM/AAAA
+
+            // Configurar Asunto Fijo
+            const asunto = encodeURIComponent("Solicitud Personal Trainer");
+
+            // Configurar Cuerpo del Mensaje con espacios y estructura limpia
+            const cuerpoMensaje = `SOLICITUD DE ENTRENAMIENTO\n` +
+                `===========================\n\n` +
+                `Fecha: ${fechaFormateada}\n\n` +
+                `Nombre y Apellido: ${nombre}\n` +
+                `Teléfono / WhatsApp: ${whatsapp}\n` +
+                `Plan de Interés: ${plan}\n\n` +
+                `===========================`;
+
+            const cuerpoCodificado = encodeURIComponent(cuerpoMensaje);
+
+            // Abrir el gestor de correo (Gmail, Outlook, etc.)
+            window.location.href = `mailto:maruzer32@gmail.com?subject=${asunto}&body=${cuerpoCodificado}`;
+        });
+    </script>
+</body>
+
+</html>
