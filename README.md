@@ -2,7 +2,7 @@
 
 Es un sitio web profesional y portafolio digital diseñado a medida para servicios de **Personal Training de Alto Rendimiento**. El proyecto combina una interfaz estética, oscura y deportiva con una arquitectura de código limpia, eficiente y orientada a la conversión de clientes potenciales.
 
-🚀 **[Ver el sitio web en vivo aquí](https://github.io)**
+🚀 **[Ver el sitio web en vivo aquí](https://maruzer32.github.io/RMZ-Personal-Trainer/)**
 
 
 ---
