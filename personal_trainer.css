@@ -1,0 +1,125 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f2f5f9;
+    color: #212529;
+}
+
+.hero {
+    min-height: 70vh;
+    background: linear-gradient(180deg, rgba(12, 60, 106, 0.92), rgba(17, 122, 147, 0.85)), url('https://source.unsplash.com/1600x900/?fitness,personal-trainer');
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-content {
+    padding: 4rem 1rem;
+}
+
+.hero .lead {
+    font-size: 1.15rem;
+}
+
+.card {
+    border-width: 2px;
+}
+
+#secciones .card-title {
+    font-size: 1.15rem;
+}
+
+.feature-box {
+    border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.contacto-texto {
+    font-size: 20px;
+}
+
+.carousel-caption {
+    background: rgba(0, 0, 0, 0.55);
+    padding: 1rem;
+    border-radius: 12px;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.hero-content h1 {
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
+}
+
+.hero .lead {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+}
+
+.hero {
+    min-height: 70vh;
+    background: linear-gradient(180deg, rgba(12, 60, 106, 0.92), rgba(17, 122, 147, 0.85)), url('https://source.unsplash.com/1600x900/?fitness,personal-trainer');
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-content {
+    padding: 4rem 1rem;
+}
+
+.card {
+    border-width: 2px;
+}
+
+#secciones .card-title {
+    font-size: 1.15rem;
+}
+
+.feature-box {
+    border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+@media (max-width: 992px) {
+    .carousel-caption {
+        display: block;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        min-height: 55vh;
+    }
+    .hero-content {
+        padding: 3rem 1rem;
+    }
+    .hero-content h1 {
+        font-size: 2.4rem;
+    }
+    .hero .lead {
+        font-size: 1rem;
+    }
+    .feature-box {
+        padding: 2rem 1.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero {
+        min-height: 50vh;
+    }
+    .hero-content {
+        padding: 2rem 1rem;
+    }
+    .carousel-caption {
+        padding: 0.75rem;
+        border-radius: 10px;
+    }
+    .navbar-nav {
+        text-align: center;
+    }
+    .navbar-nav .nav-link {
+        padding: 0.75rem 1rem;
+    }
+}
+
